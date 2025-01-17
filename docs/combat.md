@@ -1,13 +1,13 @@
 # Combat
 Combat is turn-based; each turn, units attack in steps (see below) so that different units act faster than others. At the end of each turn, if a unit has nobody left alive (`number <= 0`) or no morale (`morale <= 0`), it will be considered unable to fight until the end of the turn, when it is removed from battle.
 
-### Attack Order
-   1. Defender Ranged Units
-   2. Attacker Cavalry Units
-   3. Defender Cavalry Units
-   4. Attacker Melee Units
-   5. Defender Melee Units
-   6. Attacker Ranged Units
+### Attack Order  
+1 - Defender Ranged Units  
+2 - Attacker Cavalry Units  
+3 - Defender Cavalry Units  
+4 - Attacker Melee Units  
+5 - Defender Melee Units  
+6 - Attacker Ranged Units  
 
 ### Attacking
 When it's a unit's turn to attack, it calls the `Unit.attack` found in unit.py.  
