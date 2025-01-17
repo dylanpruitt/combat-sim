@@ -17,14 +17,14 @@
 **Wall Attack** is unimplemented.
 
 **Brute**  
-Brutes are swarm units, with the worst attack of any melee unit. They're intended to have more morale than other units (0.6 per unit), but I accidentally set the Foot Soldier/Knight values to 0.6 too. **TODO: fix this. oops...**
+Brutes are swarm units, with the worst attack of any melee unit. They're intended to have more morale than other units (0.6 per unit), but I accidentally set the Foot Soldier/Knight values to 0.6 too. **TODO: fix this. oops...**  
 Brutes' high morale means they can swarm enemies and take large casualties without retreating from battle.
 
 **Foot Soldier & Knight**  
 Foot Soldiers have better attack/defense than Brutes, and Knights have better attack/defense than Foot Soldiers.
 
 **Archers**  
-Archers are ranged units that can deal large amounts of damage to enemies, at the cost of no defense/low morale.
+Archers are ranged units that can deal large amounts of damage to enemies, at the cost of no defense/low morale. When defending, as ranged units, they attack before any other unit in the sim, allowing them to pick off enemies before they can react.
 
 **Cavalry**    
 Cavalry excel in destroying enemy morale, with an extremely high morale impact stat. They also attack much faster than melee/ranged units. While they can be powerful for forcing enemies to retreat by losing morale, their low morale and defense means they are not suited for long battles.
