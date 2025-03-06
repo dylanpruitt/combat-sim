@@ -32,7 +32,7 @@ This is a list of mechanics used in the simulation:
 ### Lessons Learned
 Developing UI with tkInter was difficult for a number of reasons; documentation on tkInter is sparse and often outdated. tkInter's `sticky` property (essentially the tkInter version of `flex-grow` in CSS) must be manually set on all UI elements that should resize as the application window changes size, and getting even the simple UI it has now to work with that was a nightmare.
 
-tkInter is very similar to Swing for Java GUIs, and was an interesting change from working with HTML - it's much easier to rapidly prototype UI with HTML/CSS, and although both use a hierarchies to organize UI, the syntax of HTML makes it much easier to understand (which made debugging UI elements' `sticky` property difficult in tkInter).
+tkInter is very similar to Swing for Java GUIs, and was an interesting change from working with HTML - it's much easier to rapidly prototype UI with HTML/CSS, and although both use hierarchies to organize UI, the syntax of HTML makes it much easier to understand (which made debugging UI elements' `sticky` property difficult in tkInter).
 
 I was surprised to find tkInter wasn't installed on standard Python 3 installations for the Mac user who demoed the application, but the program was designed primarily for Windows/Linux, so I don't consider that a failure for the project.
 
