@@ -23,7 +23,7 @@ class MainUI(ttk.Frame):
         self.attack_units = [unit.Brute(600), unit.Archer(250)]
         self.defense_units = [unit.Brute(200), unit.Cavalry(100), unit.FootSoldier(100)]
         self.speed = 1.0
-        self.interrupt = False
+        self.interrupt = True
         self.battle_turn = 1
         self.ui_state = None
 
