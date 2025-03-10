@@ -51,6 +51,10 @@ class MainUI(ttk.Frame):
         ttk.Label(self.atk_frame, text="Attacker Units", name="unit_atk", anchor="w").grid(column=0, sticky="ew")
         ttk.Label(self.def_frame, text="Defender Units", name="unit_def", anchor="w").grid(column=0, sticky="ew")
 
+        self.control_str = StringVar(value="")
+        self.control_text = ttk.Label(self, textvariable=self.control_str, anchor="center")
+        self.control_text.grid(row=4, sticky="ew")
+
         self.bottom_widget = None
         self.grid_columnconfigure(0, weight=1)
         self.grid_rowconfigure(1, weight=1)
@@ -106,10 +110,12 @@ class MainUI(ttk.Frame):
                 self.ui_state = UIStates.COMBAT
                 self.populate_combat_units()
                 self.set_time_control_as_bottom_widget()
+                self.control_str.set("Controls: [Space]: pause/resume battle [L/R Arrows]: change simulation speed [Enter]: switch to unit input")
                 self.state_str.set("Paused")
             case UIStates.UNIT_INPUT:
                 self.populate_staged_units()
                 self.set_unit_adder_as_bottom_widget()
+                self.control_str.set("Controls: [R]: run headless simulation (shows attacker win rate with matchup) [Enter]: switch to unit input")
                 self.state_str.set("Selecting units")
         self.ui_state = new_mode
     
