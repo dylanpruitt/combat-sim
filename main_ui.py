@@ -113,6 +113,9 @@ class MainUI(ttk.Frame):
                 self.control_str.set("Controls: [Space]: pause/resume battle [L/R Arrows]: change simulation speed [Enter]: switch to unit input")
                 self.state_str.set("Paused")
             case UIStates.UNIT_INPUT:
+                # Kind of a lazy way to work around unit objects not changing after battle sim, but it works.
+                self.attack_units = [unit.Brute(600), unit.Archer(250)]
+                self.defense_units = [unit.Brute(200), unit.Cavalry(100), unit.FootSoldier(100)]
                 self.populate_staged_units()
                 self.set_unit_adder_as_bottom_widget()
                 self.control_str.set("Controls: [R]: run headless simulation (shows attacker win rate with matchup) [Enter]: switch to unit input")
@@ -140,8 +143,18 @@ class MainUI(ttk.Frame):
             self.stop_combat()
             return
 
-        battle_step(self.attack_units, self.defense_units)
-        self.after(int(1000 / self.speed), self.combat_step)
+        still_fighting = battle_step(self.attack_units, self.defense_units)
+        if still_fighting:
+            self.after(int(1000 / self.speed), self.combat_step)
+        else:
+            self.stop_combat()
+            attacker_casualties = 0
+            for u in self.attack_units:
+                attacker_casualties += u.max_number - u.number
+            defender_casualties = 0
+            for u in self.defense_units:
+                defender_casualties += u.max_number - u.number
+            self.state_str.set(f"Battle over. Attackers lost {attacker_casualties} units; defenders lost {defender_casualties}.")
 
     def stop_combat(self):
         """Pauses the combat sim."""

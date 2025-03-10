@@ -47,3 +47,6 @@ def battle_step(au, du):
         for i in ranged_attack:
             target = random.choice(defender_units)
             i.attack(target)
+        return True
+    else:
+        return False
