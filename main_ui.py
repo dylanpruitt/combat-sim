@@ -1,7 +1,7 @@
 from enum import Enum
 from tkinter import StringVar, Tk, ttk
 
-from battle_logic import battle_step
+from battle_logic import battle_step, simulate_battle
 from combat_unit import CombatUnitUI
 from staged_unit import StagedUnitUI
 from time_control_ui import TimeControlUI
@@ -162,6 +162,15 @@ class MainUI(ttk.Frame):
                 # test code to check unit amount/names properly show when adding
                 print([str(x) for x in self.attack_units])
                 print([str(x) for x in self.defense_units])
+            if keysym == "r":
+                # run headless simulation to see matchup win stats
+                self.state_str.set(f"Running simulated matchup...")
+                NUM_BATTLES = 1000
+                count_won_attacker = 0
+                for i in range(NUM_BATTLES):
+                    count_won_attacker += int(simulate_battle(self.attack_units, self.defense_units))
+                attacker_win_rate = round(count_won_attacker * 100 / NUM_BATTLES, 2)
+                self.state_str.set(f"Out of {NUM_BATTLES} battles, attackers would win {count_won_attacker} ({attacker_win_rate}%)")
 
     def back(self):
         """Handles the user going back to the unit select screen."""

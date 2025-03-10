@@ -47,7 +47,9 @@ class Unit:
         """Logic for one unit to attack another."""
         if not self.can_fight or self.number <= 0 or self.morale <= 0:
             self.can_fight = False
-            self.ui_element.show_out_of_battle()
+            # ui_element may not be assigned if running headless mode, so it skips this step if there is no assigned UI element.
+            if self.ui_element is not None:
+                self.ui_element.show_out_of_battle()
             return
 
         casualties = 0
@@ -61,7 +63,7 @@ class Unit:
         unit.number = max(unit.number, 0)
         unit.morale -= casualties * self.morale_impact
         
-        if self.can_fight:
+        if self.can_fight and unit.ui_element is not None:
             unit.ui_element.update_casualty_info(casualties, casualties * self.morale_impact)
 
 class Brute(Unit):

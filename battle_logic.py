@@ -1,6 +1,16 @@
+import copy
 import random
 import unit
 
+def simulate_battle(au, du):
+    """Quickly simulates a battle without showing anything in the UI."""
+    au_copy = copy.deepcopy(au)
+    du_copy = copy.deepcopy(du)
+
+    while len([u for u in au_copy if u.can_fight]) > 0 and len([u for u in du_copy if u.can_fight]) > 0:
+        battle_step(au_copy, du_copy)
+    # returns true if attackers are left (they won), false if attackers died (defenders won)
+    return len([u for u in au_copy if u.can_fight]) > 0
 
 def battle_step(au, du):
     """Logic representing one turn in the combat sim. Units fight in a predetermined order."""
